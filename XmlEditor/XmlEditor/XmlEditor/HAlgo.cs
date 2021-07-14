@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace XmlEditor
 {
@@ -56,11 +57,15 @@ namespace XmlEditor
 
 
                 Dictionary<char, string> char2BinaryWordDictionary = new Dictionary<char, string>();
+                string y = ")";
                 foreach (HNode HNode in value_HNode)
                 {
+                    y = y + "(" + HNode.CharacterValue.Value + "-" + HNode.BinaryWord + ")";
                     char2BinaryWordDictionary.Add(HNode.CharacterValue.Value, HNode.BinaryWord);
                 }
 
+                y = y + "(";
+              //  MessageBox.Show(y);
                 StringBuilder stringBuilder = new StringBuilder();
                 List<byte> byteList = new List<byte>();
                 for (int i = 0; i < fileContents.Length; i++)
@@ -103,15 +108,20 @@ namespace XmlEditor
                 {
                     fileStream.Write(byteList.ToArray(), 0, byteList.Count);
                 }
+
+                StreamWriter outputtxt = new StreamWriter(compressedFileName + "_HuffMann.txt");
+                outputtxt.Write(y);
+                outputtxt.Close();
             }
         }
 
-        public void Decompress(string fileName)
+        public string Decompress(string fileName)
         {
             FileInfo fileInfo = new FileInfo(fileName);
-
-            if (fileInfo.Exists == true)
+            FileInfo hfileInfo = new FileInfo(fileName + "_HuffMann.txt");
+            if (fileInfo.Exists && hfileInfo.Exists)
             {
+
                 string compressedFileName = String.Format("{0}.compressed", fileInfo.FullName.Replace(fileInfo.Extension, ""));
 
                 byte[] buffer = null;
@@ -120,16 +130,55 @@ namespace XmlEditor
                     buffer = new byte[fileStream.Length];
                     fileStream.Read(buffer, 0, buffer.Length);
                 }
-
-                HNode zeroHuffmanNode = root_HNode;
-                while (zeroHuffmanNode.LeftNode != null)
+                string y = "";
+                using (StreamReader sr = new StreamReader(compressedFileName + "_HuffMann.txt"))
                 {
-                    zeroHuffmanNode = zeroHuffmanNode.LeftNode;
+
+                    y = sr.ReadToEnd();
+                    sr.Close();
+
+                }
+               
+                List<char> ch = new List<char>();
+                List<string> st = new List<string>();
+                String e = "";
+                for (int i=0; i<y.Length; i++)
+                {
+                    
+                    if (i < y.Length-2) {
+                        if (y[i] == ')' && y[i + 1] == '(')
+                        {
+                            e = y.Substring(i+2, y.IndexOf(")(", i + 2) - (i + 2));
+                            if (e[0] != '\n' && e[0] != ' ')
+                            {
+                                ch.Add(e[0]);
+                                st.Add(e.Substring(2));
+                            }
+                            else if (e[0] == '\n')
+                            {
+                                ch.Add(e[0]);
+                                st.Add("n" + e.Substring(2));
+                               
+                            }
+                            else if (e[0] == ' ')
+                            {
+                                ch.Add(e[0]);
+                                st.Add("s" + e.Substring(2));
+                            }
+                            
+                            i += (e.Length+1);
+                        } }
+                    else
+                    {
+                        ;
+                    }
                 }
 
-                HNode currentHNode = null;
-                StringBuilder stringBuilder = new StringBuilder();
 
+                string binaryWord2 = "";
+                string entry = "";
+                bool isFound = false;
+                StringBuilder stringBuilder = new StringBuilder();
                 for (int i = 0; i < buffer.Length; i++)
                 {
                     string binaryWord = "";
@@ -137,7 +186,7 @@ namespace XmlEditor
 
                     if (aByte == 0)
                     {
-                        binaryWord = zeroHuffmanNode.BinaryWord;
+                        binaryWord = st[0];
                     }
                     else
                     {
@@ -154,29 +203,41 @@ namespace XmlEditor
 
                         binaryWord = binary_StringBuilder.ToString();
                     }
+                    int dictionaryCounts = st.Count;
 
-                    for (int j = 0; j < binaryWord.Length; j++)
+                    for (int u = 0;  u<binaryWord.Length ; u++)//optimization
                     {
-                        char character_Value = binaryWord[j];
+                        binaryWord2 += binaryWord[u];
 
-                        if (currentHNode == null)
+                        for (int j = 0; j < dictionaryCounts; j++)
                         {
-                            currentHNode = root_HNode;
-                        }
-
-                        if (character_Value == '0')
-                        {
-                            currentHNode = currentHNode.LeftNode;
-                        }
-                        else
-                        {
-                            currentHNode = currentHNode.RightNode;
-                        }
-
-                        if ((currentHNode.LeftNode == null) && (currentHNode.RightNode == null))
-                        {
-                            stringBuilder.Append(currentHNode.CharacterValue.Value);
-                            currentHNode = null;
+                            entry = st[j];
+                            if (entry.Equals(binaryWord2) && entry[0] != 's' && entry[0] != 'n')
+                            {
+                                stringBuilder.Append(ch[j]);
+                                binaryWord2 = "";
+                                break;
+                            }
+                            else if (entry[0] == 's')
+                            {
+                                entry = entry.Substring(1);
+                                if (entry.Equals(binaryWord2))
+                                {
+                                    stringBuilder.Append(' ');
+                                    binaryWord2 = "";
+                                    break;
+                                }
+                            }
+                            else if (entry[0] == 'n')
+                            {
+                                entry = entry.Substring(1);
+                                if (entry.Equals(binaryWord2))
+                                {
+                                    stringBuilder.Append('\n');
+                                    binaryWord2 = "";
+                                    break;
+                                }
+                            }
                         }
                     }
                 }
@@ -187,11 +248,19 @@ namespace XmlEditor
                 {
                     File.Delete(uncompressedFileName);
                 }
-
+                string s = "";
                 using (StreamWriter streamWriter = new StreamWriter(File.OpenWrite(uncompressedFileName)))
                 {
+                    s = stringBuilder.ToString();
                     streamWriter.Write(stringBuilder.ToString());
                 }
+                return s;
+            }
+            else
+            {
+                MessageBox.Show("Check Compression File and Huffman Code File exist", "Error",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return "Check Compression File and Huffman Code File exist";
             }
         }
 

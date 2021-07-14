@@ -49,6 +49,10 @@
             this.minify = new System.Windows.Forms.Button();
             this.xmlToJson = new System.Windows.Forms.Button();
             this.format = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.compressed_rdbtn = new System.Windows.Forms.RadioButton();
+            this.xmlFile_rdbtn = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -57,6 +61,8 @@
             this.panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // input
@@ -155,7 +161,7 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Window;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.loadfile);
+            this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.groupBox3);
             this.panel2.Controls.Add(this.save_Button);
             this.panel2.Controls.Add(this.minify);
@@ -170,9 +176,9 @@
             // 
             this.loadfile.BackColor = System.Drawing.Color.AliceBlue;
             this.loadfile.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.loadfile.Location = new System.Drawing.Point(30, 35);
+            this.loadfile.Location = new System.Drawing.Point(11, 12);
             this.loadfile.Name = "loadfile";
-            this.loadfile.Size = new System.Drawing.Size(173, 79);
+            this.loadfile.Size = new System.Drawing.Size(173, 39);
             this.loadfile.TabIndex = 0;
             this.loadfile.Text = "Load file";
             this.loadfile.UseVisualStyleBackColor = false;
@@ -280,6 +286,49 @@
             this.format.Text = "Format";
             this.format.UseVisualStyleBackColor = false;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.groupBox2);
+            this.groupBox1.Controls.Add(this.loadfile);
+            this.groupBox1.Location = new System.Drawing.Point(14, -2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 142);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.xmlFile_rdbtn);
+            this.groupBox2.Controls.Add(this.compressed_rdbtn);
+            this.groupBox2.Location = new System.Drawing.Point(8, 57);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(176, 79);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Choose Type of File:";
+            // 
+            // compressed_rdbtn
+            // 
+            this.compressed_rdbtn.AutoSize = true;
+            this.compressed_rdbtn.Location = new System.Drawing.Point(7, 22);
+            this.compressed_rdbtn.Name = "compressed_rdbtn";
+            this.compressed_rdbtn.Size = new System.Drawing.Size(108, 21);
+            this.compressed_rdbtn.TabIndex = 0;
+            this.compressed_rdbtn.TabStop = true;
+            this.compressed_rdbtn.Text = "Compressed";
+            this.compressed_rdbtn.UseVisualStyleBackColor = true;
+            // 
+            // xmlFile_rdbtn
+            // 
+            this.xmlFile_rdbtn.AutoSize = true;
+            this.xmlFile_rdbtn.Location = new System.Drawing.Point(7, 50);
+            this.xmlFile_rdbtn.Name = "xmlFile_rdbtn";
+            this.xmlFile_rdbtn.Size = new System.Drawing.Size(83, 21);
+            this.xmlFile_rdbtn.TabIndex = 1;
+            this.xmlFile_rdbtn.TabStop = true;
+            this.xmlFile_rdbtn.Text = "XML File";
+            this.xmlFile_rdbtn.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -304,6 +353,9 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -330,6 +382,10 @@
         private System.Windows.Forms.RadioButton output_radioButton;
         private System.Windows.Forms.RadioButton input_radioButton;
         private System.Windows.Forms.Button loadfile;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton xmlFile_rdbtn;
+        private System.Windows.Forms.RadioButton compressed_rdbtn;
     }
 }
 

@@ -28,6 +28,8 @@ namespace XmlEditor
             output.Clear();
             input_radioButton.Checked = false;
             output_radioButton.Checked = false;
+            compressed_rdbtn.Checked = false;
+            xmlFile_rdbtn.Checked = false;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -42,23 +44,39 @@ namespace XmlEditor
 
         private void loadfile_Click(object sender, EventArgs e)
         {
-
-
+            if (!xmlFile_rdbtn.Checked && !compressed_rdbtn.Checked)
+            {
+                MessageBox.Show("You should choose compressed or XML", "Error",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             OpenFileDialog openfile = new OpenFileDialog();
             openfile.Title = "Open a XML file";
             if (openfile.ShowDialog() == DialogResult.OK)
             {
                 input.Clear();
-                using (StreamReader sr = new StreamReader(openfile.FileName))
+                if (xmlFile_rdbtn.Checked && !compressed_rdbtn.Checked)
+                {
+                    using (StreamReader sr = new StreamReader(openfile.FileName))
+                    {
+                        fileName = openfile.FileName;
+                        output_fileName = fileName;
+                        xmlString = sr.ReadToEnd();
+                        input.Text = xmlString;
+                        sr.Close();
+
+
+                    }
+                }
+                else if (!xmlFile_rdbtn.Checked && compressed_rdbtn.Checked)
                 {
                     fileName = openfile.FileName;
                     output_fileName = fileName;
-                   
-                    xmlString = sr.ReadToEnd();
+
+                    HAlgo d = new HAlgo();
+                    xmlString = d.Decompress(fileName);
                     input.Text = xmlString;
-                    sr.Close();
-                
                 }
             }
         }
