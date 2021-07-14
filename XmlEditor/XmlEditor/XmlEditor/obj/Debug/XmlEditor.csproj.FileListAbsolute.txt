@@ -16,3 +16,12 @@ C:\Users\rehab\Downloads\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.cspro
 C:\Users\rehab\Downloads\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.exe
 C:\Users\rehab\Downloads\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.pdb
 C:\Users\rehab\Downloads\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.Form1.resources
+C:\Users\Ahmed\Downloads\CS323\xml-Editor\xml-Editor\XmlEditor\XmlEditor\XmlEditor\bin\Debug\XmlEditor.exe.config
+C:\Users\Ahmed\Downloads\CS323\xml-Editor\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.exe
+C:\Users\Ahmed\Downloads\CS323\xml-Editor\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.pdb
+C:\Users\Ahmed\Downloads\CS323\xml-Editor\xml-Editor\XmlEditor\XmlEditor\XmlEditor\bin\Debug\XmlEditor.exe
+C:\Users\Ahmed\Downloads\CS323\xml-Editor\xml-Editor\XmlEditor\XmlEditor\XmlEditor\bin\Debug\XmlEditor.pdb
+C:\Users\Ahmed\Downloads\CS323\xml-Editor\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.csprojResolveAssemblyReference.cache
+C:\Users\Ahmed\Downloads\CS323\xml-Editor\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.Form1.resources
+C:\Users\Ahmed\Downloads\CS323\xml-Editor\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.Properties.Resources.resources
+C:\Users\Ahmed\Downloads\CS323\xml-Editor\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.csproj.GenerateResource.Cache
