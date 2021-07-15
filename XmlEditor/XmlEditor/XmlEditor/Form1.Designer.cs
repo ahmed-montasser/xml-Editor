@@ -53,6 +53,7 @@
             this.minify = new System.Windows.Forms.Button();
             this.xmlToJson = new System.Windows.Forms.Button();
             this.format = new System.Windows.Forms.Button();
+            this.checkError = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -170,6 +171,7 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Window;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.checkError);
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.groupBox3);
             this.panel2.Controls.Add(this.save_Button);
@@ -359,6 +361,19 @@
             this.format.UseVisualStyleBackColor = false;
             this.format.Click += new System.EventHandler(this.format_Click);
             // 
+            // checkError
+            // 
+            this.checkError.BackColor = System.Drawing.Color.AliceBlue;
+            this.checkError.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.checkError.Location = new System.Drawing.Point(473, 42);
+            this.checkError.Margin = new System.Windows.Forms.Padding(2);
+            this.checkError.Name = "checkError";
+            this.checkError.Size = new System.Drawing.Size(130, 30);
+            this.checkError.TabIndex = 13;
+            this.checkError.Text = "Check consistency";
+            this.checkError.UseVisualStyleBackColor = false;
+            this.checkError.Click += new System.EventHandler(this.checkError_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -417,6 +432,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton xmlFile_rdbtn;
         private System.Windows.Forms.RadioButton compressed_rdbtn;
+        private System.Windows.Forms.Button checkError;
     }
 }
 

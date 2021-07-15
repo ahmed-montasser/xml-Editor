@@ -17,6 +17,8 @@ namespace XmlEditor
         private string output_string = "";
         private string fileName = "";
         private string output_fileName = "";
+        private Stack<string> tag = new Stack<string>();
+        private List<string> lines;
         public Form1()
         {
             InitializeComponent();
@@ -40,6 +42,127 @@ namespace XmlEditor
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             output.Copy();
+        }
+
+        private void AppendToOutput(string line)
+        {
+            if (input.Text.Length == 0)
+            {
+                input.AppendText(line);
+            }
+            else
+            {
+                input.AppendText("\n" + line);
+            }
+        }
+
+        private void checkConsistency()
+        {
+
+            foreach (var line in lines)
+            {
+                int index1, index2;
+                string Tag;
+
+                if (line.Contains("<?") || line.Contains("<!--") || line.Contains("?>") || line.Contains("-->"))
+                {
+
+                    index1 = line.IndexOf('<');
+                    index2 = line.LastIndexOf('<');
+                    if (index1 != index2 && index1 != -1 && (line[index1 + 1] == '!' || line[index1 + 1] == '?'))
+                    {
+                        AppendToOutput(line);
+                    }
+                    else if (index1 == index2 && index1 != -1 && (line[index1 + 1] == '!' || line[index1 + 1] == '?'))
+                    {
+                        AppendToOutput(line);
+                    }
+                    else if (index1 != index2 && index1 != -1 && (line[index1 + 1] != '!' || line[index1 + 1] != '?'))
+                    {
+                        AppendToOutput(line);
+
+                        index1 = line.IndexOf('<') + 1;
+                        index2 = line.IndexOf('>', index1);
+                        if (index1 != -1 && index2 != -1)
+                        {
+                            Tag = line.Substring(index1, index2 - index1);
+
+                            tag.Push(Tag);
+                        }
+                    }
+                    else
+                    {
+                        AppendToOutput(line);
+                    }
+                }
+                else if (line.Contains("<"))
+                {
+
+                    index1 = line.IndexOf('<') + 1;
+                    index2 = line.IndexOf('>', index1);
+                    Tag = line.Substring(index1, index2 - index1);
+
+                    if (Tag[Tag.Length - 1] == '/')
+                    {
+                        AppendToOutput(line);
+                    }
+                    else
+                    {
+                        if (Tag[0] == '/')
+                        {
+                            Tag = Tag.Substring(1, Tag.Length - 1);
+                            if (tag.Count != 0 && tag.Peek().Contains(Tag))
+                            {
+                                AppendToOutput(line);
+
+                                tag.Pop();
+                            }
+                        }
+                        else
+                        {
+                            tag.Push(Tag);
+
+                            index1 = line.IndexOf("</", index2);
+                            if (index1 != -1)
+                            {
+                                index1 = index1 + 2;
+                                index2 = line.IndexOf('>', index1);
+                                Tag = line.Substring(index1, index2 - index1);
+                                if (tag.Peek().Contains(Tag))
+                                {
+                                    AppendToOutput(line);
+                                    tag.Pop();
+
+                                }
+                                else
+                                {
+                                    AppendToOutput("<" + Tag + line.Substring(Tag.Length - 1, line.Length - Tag.Length + 1));
+
+                                }
+                            }
+                            else
+                            {
+                                AppendToOutput(line);
+                            }
+                        }
+                    }
+
+
+                }
+                else
+                {
+                    AppendToOutput(line);
+                }
+            }
+
+            while (tag.Count != 0)
+            {
+
+                AppendToOutput("</" + tag.Pop() + ">");
+
+            }
+
+
         }
 
         private void loadfile_Click(object sender, EventArgs e)
@@ -66,6 +189,9 @@ namespace XmlEditor
                         input.Text = xmlString;
                         sr.Close();
 
+                        lines = this.input.Text.Split('\n').ToList();
+
+                       
 
                     }
                 }
@@ -196,6 +322,12 @@ namespace XmlEditor
             }
             f_output += p_xml[p_xml.Count() - 1];
             output.Text = f_output;
+        }
+
+        private void checkError_Click(object sender, EventArgs e)
+        {
+            input.Clear();
+            checkConsistency();
         }
     }
 }

@@ -49,3 +49,13 @@ C:\Users\the5b\Documents\Visual Studio 2010\Projects\XmlEditor\XmlEditor\bin\Deb
 C:\Users\the5b\Documents\Visual Studio 2010\Projects\XmlEditor\XmlEditor\bin\Debug\normnfd.nlp
 C:\Users\the5b\Documents\Visual Studio 2010\Projects\XmlEditor\XmlEditor\bin\Debug\normnfkc.nlp
 C:\Users\the5b\Documents\Visual Studio 2010\Projects\XmlEditor\XmlEditor\bin\Debug\normnfkd.nlp
+C:\Users\rehab\New folder\xml-Editor\XmlEditor\XmlEditor\XmlEditor\bin\Debug\XmlEditor.exe.config
+C:\Users\rehab\New folder\xml-Editor\XmlEditor\XmlEditor\XmlEditor\bin\Debug\XmlEditor.exe
+C:\Users\rehab\New folder\xml-Editor\XmlEditor\XmlEditor\XmlEditor\bin\Debug\XmlEditor.pdb
+C:\Users\rehab\New folder\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.csproj.AssemblyReference.cache
+C:\Users\rehab\New folder\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.Form1.resources
+C:\Users\rehab\New folder\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.Properties.Resources.resources
+C:\Users\rehab\New folder\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.csproj.GenerateResource.cache
+C:\Users\rehab\New folder\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.csproj.CoreCompileInputs.cache
+C:\Users\rehab\New folder\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.exe
+C:\Users\rehab\New folder\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.pdb
