@@ -59,3 +59,13 @@ C:\Users\rehab\New folder\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\Xml
 C:\Users\rehab\New folder\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.csproj.CoreCompileInputs.cache
 C:\Users\rehab\New folder\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.exe
 C:\Users\rehab\New folder\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.pdb
+C:\Users\rehab\a\xml-Editor\XmlEditor\XmlEditor\XmlEditor\bin\Debug\XmlEditor.exe.config
+C:\Users\rehab\a\xml-Editor\XmlEditor\XmlEditor\XmlEditor\bin\Debug\XmlEditor.exe
+C:\Users\rehab\a\xml-Editor\XmlEditor\XmlEditor\XmlEditor\bin\Debug\XmlEditor.pdb
+C:\Users\rehab\a\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.csproj.AssemblyReference.cache
+C:\Users\rehab\a\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.Form1.resources
+C:\Users\rehab\a\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.Properties.Resources.resources
+C:\Users\rehab\a\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.csproj.GenerateResource.cache
+C:\Users\rehab\a\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.csproj.CoreCompileInputs.cache
+C:\Users\rehab\a\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.exe
+C:\Users\rehab\a\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.pdb

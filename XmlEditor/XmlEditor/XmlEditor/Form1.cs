@@ -101,8 +101,16 @@ namespace XmlEditor
                     index1 = line.IndexOf('<') + 1;
                     index2 = line.IndexOf('>', index1);
                     Tag = line.Substring(index1, index2 - index1);
+                    int index3;
 
-                    if (Tag[Tag.Length - 1] == '/')
+                    if (Tag.Contains(' '))
+                    {
+
+                        index3 = line.IndexOf(' ', index1);
+                        Tag = line.Substring(index1, index3 - index1);
+                    }
+
+                    if (line[index2 - 1] == '/')
                     {
                         AppendToOutput(line);
                     }
@@ -136,7 +144,8 @@ namespace XmlEditor
                                 }
                                 else
                                 {
-                                    AppendToOutput("<" + Tag + line.Substring(Tag.Length - 1, line.Length - Tag.Length + 1));
+
+                                    AppendToOutput(line.Substring(0, index1) + tag.Pop() + ">");
 
                                 }
                             }
