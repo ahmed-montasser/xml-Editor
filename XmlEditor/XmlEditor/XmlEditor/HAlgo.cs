@@ -35,19 +35,92 @@ namespace XmlEditor
             return HNodes;
         }
 
-        public void Compress(string fileName, string savefileName)
+        public void Compress(string fileName, string savefileName, bool io)
         {
-            FileInfo fileInfo = new FileInfo(fileName);
-
-            if (fileInfo.Exists == true)
+            if (io)
             {
-                string fileContents = "";
 
-                using (StreamReader theStreamReader = new StreamReader(File.OpenRead(fileName)))
+                FileInfo fileInfo = new FileInfo(fileName);
+
+                if (fileInfo.Exists == true)
                 {
-                    fileContents = theStreamReader.ReadToEnd();
+                    string fileContents = "";
+
+                    using (StreamReader theStreamReader = new StreamReader(File.OpenRead(fileName)))
+                    {
+                        fileContents = theStreamReader.ReadToEnd();
+                    }
+
+                    List<HNode> HNodes = build_BinaryTree(fileContents);
+
+                    value_HNode = HNodes
+                        .Where(a => (a.CharacterValue.HasValue == true))
+                        .OrderBy(a => (a.BinaryWord))
+                        .ToList();
+
+
+                    Dictionary<char, string> char2BinaryWordDictionary = new Dictionary<char, string>();
+                    string y = ")";
+                    foreach (HNode HNode in value_HNode)
+                    {
+                        y = y + "(" + HNode.CharacterValue.Value + "-" + HNode.BinaryWord + ")";
+                        char2BinaryWordDictionary.Add(HNode.CharacterValue.Value, HNode.BinaryWord);
+                    }
+
+                    y = y + "(";
+                    //  MessageBox.Show(y);
+                    StringBuilder stringBuilder = new StringBuilder();
+                    List<byte> byteList = new List<byte>();
+                    for (int i = 0; i < fileContents.Length; i++)
+                    {
+                        string word = "";
+
+
+                        stringBuilder.Append(char2BinaryWordDictionary[fileContents[i]]);
+
+                        while (stringBuilder.Length >= 8)
+                        {
+                            word = stringBuilder.ToString().Substring(0, 8);
+
+                            stringBuilder.Remove(0, word.Length);
+                        }
+
+                        if (String.IsNullOrEmpty(word) == false)
+                        {
+                            byteList.Add(Convert.ToByte(word, 2));
+                        }
+                    }
+
+                    if (stringBuilder.Length > 0)
+                    {
+                        string word = stringBuilder.ToString();
+
+                        if (String.IsNullOrEmpty(word) == false)
+                        {
+                            byteList.Add(Convert.ToByte(word, 2));
+                        }
+                    }
+
+                    string compressedFileName = Path.Combine(savefileName, String.Format("{0}.compressed", savefileName));
+                    if (File.Exists(compressedFileName) == true)
+                    {
+                        File.Delete(compressedFileName);
+                    }
+
+                    using (FileStream fileStream = File.OpenWrite(compressedFileName))
+                    {
+                        fileStream.Write(byteList.ToArray(), 0, byteList.Count);
+                    }
+
+                    StreamWriter outputtxt = new StreamWriter(compressedFileName + "_HuffMann.txt");
+                    outputtxt.Write(y);
+                    outputtxt.Close();
                 }
 
+            }
+            else //!io
+            {
+                string fileContents = fileName;
                 List<HNode> HNodes = build_BinaryTree(fileContents);
 
                 value_HNode = HNodes
@@ -65,7 +138,7 @@ namespace XmlEditor
                 }
 
                 y = y + "(";
-              //  MessageBox.Show(y);
+                //  MessageBox.Show(y);
                 StringBuilder stringBuilder = new StringBuilder();
                 List<byte> byteList = new List<byte>();
                 for (int i = 0; i < fileContents.Length; i++)
@@ -114,7 +187,7 @@ namespace XmlEditor
                 outputtxt.Close();
             }
         }
-
+        
         public string Decompress(string fileName)
         {
             FileInfo fileInfo = new FileInfo(fileName);
@@ -149,7 +222,7 @@ namespace XmlEditor
                         if (y[i] == ')' && y[i + 1] == '(')
                         {
                             e = y.Substring(i+2, y.IndexOf(")(", i + 2) - (i + 2));
-                            if (e[0] != '\n' && e[0] != ' ')
+                            if (e[0] != '\n' && e[0] != ' ' && e[0] != '\t')
                             {
                                 ch.Add(e[0]);
                                 st.Add(e.Substring(2));
@@ -165,7 +238,12 @@ namespace XmlEditor
                                 ch.Add(e[0]);
                                 st.Add("s" + e.Substring(2));
                             }
-                            
+                            else if (e[0] == '\t')
+                            {
+                                ch.Add(e[0]);
+                                st.Add("t" + e.Substring(2));
+                            }
+
                             i += (e.Length+1);
                         } }
                     else
@@ -177,7 +255,6 @@ namespace XmlEditor
 
                 string binaryWord2 = "";
                 string entry = "";
-                bool isFound = false;
                 StringBuilder stringBuilder = new StringBuilder();
                 for (int i = 0; i < buffer.Length; i++)
                 {
@@ -234,6 +311,16 @@ namespace XmlEditor
                                 if (entry.Equals(binaryWord2))
                                 {
                                     stringBuilder.Append('\n');
+                                    binaryWord2 = "";
+                                    break;
+                                }
+                            }
+                            else if (entry[0] == 't')
+                            {
+                                entry = entry.Substring(1);
+                                if (entry.Equals(binaryWord2))
+                                {
+                                    stringBuilder.Append('\t');
                                     binaryWord2 = "";
                                     break;
                                 }

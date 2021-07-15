@@ -16,7 +16,6 @@ namespace XmlEditor
         {
             Stack<char> xmlStack = new Stack<char>();
             Stack<char> arrows = new Stack<char>();
-            bool skip = false;
 
             char[] xml = xmlString.ToCharArray();
             int xmlStringLength = xml.Length;
@@ -29,10 +28,7 @@ namespace XmlEditor
                     {
                         arrows.Push('>');
                         xmlStack.Push('>');
-                        if (xml[i - 1] != '-' && xml[i - 1] != '?')
-                        {
-                            skip = true;
-                        }
+                        
                         continue;
                     }
                     else //error
@@ -49,7 +45,6 @@ namespace XmlEditor
                     {
                         arrows.Pop();
                         xmlStack.Push('<');
-                        skip = false;
                         continue;
                     }
                     else //error
@@ -60,7 +55,7 @@ namespace XmlEditor
                     }
                 }
 
-                if ((xml[i] == '\n' || xml[i] == '\t') && !skip)
+                if ((xml[i] == '\n' || xml[i] == '\t') )
 
                 { continue; }
 

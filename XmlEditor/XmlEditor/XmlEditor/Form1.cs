@@ -255,7 +255,7 @@ namespace XmlEditor
                 savefile.Title = "Save file";
                 if (savefile.ShowDialog() == DialogResult.OK)
                 {
-                    new HAlgo().Compress(fileName, savefile.FileName);
+                    new HAlgo().Compress(fileName, savefile.FileName , true );
                 }
 
             }
@@ -272,7 +272,14 @@ namespace XmlEditor
                 savefile.Title = "Save file";
                 if (savefile.ShowDialog() == DialogResult.OK)
                 {
-                    new HAlgo().Compress(fileName, savefile.FileName);
+                    if (output.Text != null && output.Text != " ")
+                    {
+                        new HAlgo().Compress(output.Text, savefile.FileName, false);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Output is empty");
+                    }
                 }
             }
 
