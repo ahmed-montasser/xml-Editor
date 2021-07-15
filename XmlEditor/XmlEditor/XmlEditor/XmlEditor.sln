@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlEditor", "XmlEditor.csproj", "{8F320F12-4A07-47DA-B3BC-6DB6CEE3773F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F320F12-4A07-47DA-B3BC-6DB6CEE3773F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F320F12-4A07-47DA-B3BC-6DB6CEE3773F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F320F12-4A07-47DA-B3BC-6DB6CEE3773F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F320F12-4A07-47DA-B3BC-6DB6CEE3773F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

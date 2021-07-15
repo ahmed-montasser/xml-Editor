@@ -151,5 +151,51 @@ namespace XmlEditor
             }
 
         }
+
+        private void xmlToJson_Click(object sender, EventArgs e)
+        {
+
+            List<string> xml = new List<string>();
+            String x = input.Text;
+            int i = 0;
+            while (x.IndexOf("\n", i) >= 0 && x.IndexOf("\n", i) < 100000)
+            {
+                xml.Add(x.Substring(i, x.IndexOf("\n", i) - i));
+                i = x.IndexOf("\n", i) + 1;
+            }
+            xml.Add(x.Substring(i, x.Length -i));
+            xml2json function = new xml2json();
+            List<string> json = function.finalizing(xml);
+            string f_output="";
+            for (int m = 0; m < json.Count()-1; m++)
+            {
+                f_output += json[m] + "\n";
+            }
+            f_output += json[json.Count() - 1];
+            output.Text = f_output;
+        }
+
+        private void format_Click(object sender, EventArgs e)
+        {
+
+            List<string> xml = new List<string>();
+            String x = input.Text;
+            int i = 0;
+            while (x.IndexOf("\n", i) >= 0 && x.IndexOf("\n", i) < 100000)
+            {
+                xml.Add(x.Substring(i, x.IndexOf("\n", i) - i));
+                i = x.IndexOf("\n", i) + 1;
+            }
+            xml.Add(x.Substring(i, x.Length - i));
+            prettify function2 = new prettify();
+            List<string> p_xml = function2.operation2(xml);
+            string f_output = "";
+            for (int m = 0; m < p_xml.Count() - 1; m++)
+            {
+                f_output += p_xml[m] + "\n";
+            }
+            f_output += p_xml[p_xml.Count() - 1];
+            output.Text = f_output;
+        }
     }
 }

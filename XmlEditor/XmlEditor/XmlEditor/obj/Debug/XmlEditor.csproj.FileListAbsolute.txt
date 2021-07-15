@@ -34,3 +34,18 @@ C:\Users\Ahmed\Downloads\New folder\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj
 C:\Users\Ahmed\Downloads\New folder\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.Form1.resources
 C:\Users\Ahmed\Downloads\New folder\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.Properties.Resources.resources
 C:\Users\Ahmed\Downloads\New folder\xml-Editor\XmlEditor\XmlEditor\XmlEditor\obj\Debug\XmlEditor.csproj.GenerateResource.Cache
+C:\Users\the5b\Documents\Visual Studio 2010\Projects\XmlEditor\XmlEditor\bin\Debug\XmlEditor.exe.config
+C:\Users\the5b\Documents\Visual Studio 2010\Projects\XmlEditor\XmlEditor\obj\Debug\XmlEditor.exe
+C:\Users\the5b\Documents\Visual Studio 2010\Projects\XmlEditor\XmlEditor\obj\Debug\XmlEditor.pdb
+C:\Users\the5b\Documents\Visual Studio 2010\Projects\XmlEditor\XmlEditor\obj\Debug\XmlEditor.csprojResolveAssemblyReference.cache
+C:\Users\the5b\Documents\Visual Studio 2010\Projects\XmlEditor\XmlEditor\obj\Debug\XmlEditor.Form1.resources
+C:\Users\the5b\Documents\Visual Studio 2010\Projects\XmlEditor\XmlEditor\obj\Debug\XmlEditor.Properties.Resources.resources
+C:\Users\the5b\Documents\Visual Studio 2010\Projects\XmlEditor\XmlEditor\obj\Debug\XmlEditor.csproj.GenerateResource.Cache
+C:\Users\the5b\Documents\Visual Studio 2010\Projects\XmlEditor\XmlEditor\bin\Debug\XmlEditor.exe
+C:\Users\the5b\Documents\Visual Studio 2010\Projects\XmlEditor\XmlEditor\bin\Debug\XmlEditor.pdb
+C:\Users\the5b\Documents\Visual Studio 2010\Projects\XmlEditor\XmlEditor\bin\Debug\mscorlib.dll
+C:\Users\the5b\Documents\Visual Studio 2010\Projects\XmlEditor\XmlEditor\bin\Debug\normidna.nlp
+C:\Users\the5b\Documents\Visual Studio 2010\Projects\XmlEditor\XmlEditor\bin\Debug\normnfc.nlp
+C:\Users\the5b\Documents\Visual Studio 2010\Projects\XmlEditor\XmlEditor\bin\Debug\normnfd.nlp
+C:\Users\the5b\Documents\Visual Studio 2010\Projects\XmlEditor\XmlEditor\bin\Debug\normnfkc.nlp
+C:\Users\the5b\Documents\Visual Studio 2010\Projects\XmlEditor\XmlEditor\bin\Debug\normnfkd.nlp
